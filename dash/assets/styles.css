@@ -1,0 +1,128 @@
+/* Background and Text Color */
+body {
+    background-color: #0e1117;
+    color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #161b22;
+}
+
+/* Input Components */
+input, select, textarea {
+    background-color: #161b22;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* Buttons */
+button {
+    background-color: #0083FF;
+    color: white;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    color: #000000;  /* Set table row text color to black */
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: #e9e9e9;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+/* Specific Header Colors */
+table thead th:nth-child(1) {
+    background-color: #333333;
+}
+
+table thead th:nth-child(2) {
+    background-color: #FFDD44;
+}
+
+table thead th:nth-child(3) {
+    background-color: #FF6F61;
+}
+
+table thead th:nth-child(4) {
+    background-color: #6B5B95;
+}
+
+table thead th:nth-child(5) {
+    background-color: #88B04B;
+}
+
+/* Header styles for the DataTable */
+.data-table-header-Name {
+    background-color: #333333;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-Age {
+    background-color: #FFDD44;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-Department {
+    background-color: #FF6F61;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-Salary {
+    background-color: #6B5B95;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-City {
+    background-color: #88B04B;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-lat {
+    background-color: #009879;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-lon {
+    background-color: #ff6347;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table-header-Age-Interval {
+    background-color: #4682b4;
+    color: white;
+    font-weight: bold;
+}
+
