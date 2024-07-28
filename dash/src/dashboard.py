@@ -1,3 +1,4 @@
+import os
 import dash
 from dash import dcc, html, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
@@ -5,9 +6,19 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, '/assets/styles.css'])
+# Define the base directory
+base_dir = os.path.abspath(os.path.dirname(__file__))
+assets_dir = os.path.join(base_dir, '..', 'assets')
 
-data = pd.read_csv('data.csv')
+# Update paths to be relative to the script's directory
+external_stylesheets = [dbc.themes.BOOTSTRAP, '/assets/styles.css']
+data_path = os.path.join(base_dir, '..', 'data.csv')
+logo_path = '/assets/logo.png'
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, assets_folder=assets_dir)
+app.config.suppress_callback_exceptions = True  # Add this line
+
+data = pd.read_csv(data_path)
 
 header_colors = {
     'Name': '#333333',
@@ -43,11 +54,48 @@ def generate_table(dataframe):
         sort_action='native'
     )
 
+def build_tree(data):
+    tree = []
+    departments = data['Department'].unique()
+    for dept in departments:
+        employees = data[data['Department'] == dept]['Name'].sort_values().tolist()
+        tree.append({
+            'department': dept,
+            'employees': [{'name': emp} for emp in employees]
+        })
+    return tree
+
+department_tree = build_tree(data)
+
+def show_department_tree_view():
+    tree_layout = []
+    for node in department_tree:
+        tree_layout.append(
+            html.Div([
+                dbc.Button(
+                    node['department'],
+                    id=f"dept-{node['department']}-toggle",
+                    className="mb-3",
+                    color="primary",
+                    n_clicks=0
+                ),
+                dbc.Collapse(
+                    html.Div([html.P(emp['name'], className="employee-name") for emp in node['employees']]),
+                    id=f"dept-{node['department']}-collapse",
+                    is_open=False
+                )
+            ])
+        )
+    return html.Div([
+        html.H1("Department Tree View"),
+        html.Div(tree_layout)
+    ])
+
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     dbc.Row([
         dbc.Col([
-            html.Img(src='/assets/logo.png', style={'width': '100px'}),
+            html.Img(src=logo_path, style={'width': '100px'}),
             html.H2("Navigation"),
             dbc.Nav([
                 dbc.NavLink("Overview", href="/", active="exact"),
@@ -207,32 +255,24 @@ def update_summary_statistic(stat):
         summary_sum = data.groupby('Department')['Salary'].sum().reset_index().sort_values(by='Department')
         return generate_table(summary_sum)
 
-def show_department_tree_view():
-    department_tree = []
-    for dept in data['Department'].unique():
-        employees = data[data['Department'] == dept]['Name'].sort_values().tolist()
-        department_tree.append({
-            'label': dept,
-            'value': dept,
-            'children': [{'label': emp, 'value': f'{dept}_{emp}'} for emp in employees]
-        })
-
-    return html.Div([
-        html.H1("Department Tree View"),
-        dcc.Checklist(
-            id='department-tree-view',
-            options=[{'label': d['label'], 'value': d['value']} for d in department_tree],
-            value=[]
-        ),
-        html.Div(id='tree-selected-nodes')
-    ])
-
 @app.callback(
-    Output('tree-selected-nodes', 'children'),
-    [Input('department-tree-view', 'value')]
+    [Output(f"dept-{node['department']}-collapse", "is_open") for node in department_tree],
+    [Input(f"dept-{node['department']}-toggle", "n_clicks") for node in department_tree],
+    [State(f"dept-{node['department']}-collapse", "is_open") for node in department_tree]
 )
-def update_tree_selected_nodes(selected_nodes):
-    return html.Div([html.P(f'Selected: {node}') for node in selected_nodes])
+def toggle_collapse(*args):
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        return [False] * len(department_tree)
+    button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+    is_open_states = args[len(department_tree):]
+    toggle_states = []
+    for i, node in enumerate(department_tree):
+        if button_id == f"dept-{node['department']}-toggle":
+            toggle_states.append(not is_open_states[i])
+        else:
+            toggle_states.append(is_open_states[i])
+    return toggle_states
 
 def show_interactive_map():
     return html.Div([
@@ -293,24 +333,6 @@ def update_map(selected_index):
 
     return fig
 
-# Ensure the correct URL path is updated
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    dbc.Row([
-        dbc.Col([
-            html.Img(src='/assets/logo.png', style={'width': '100px'}),
-            html.H2("Navigation"),
-            dbc.Nav([
-                dbc.NavLink("Overview", href="/", active="exact"),
-                dbc.NavLink("Employee Data", href="/employee-data", active="exact"),
-                dbc.NavLink("Statistics", href="/statistics", active="exact"),
-                dbc.NavLink("Department Tree View", href="/department-tree-view", active="exact"),
-                dbc.NavLink("Interactive Map", href="/interactive-map", active="exact"),
-            ], vertical=True, pills=True, style={'margin-top': '20px'})
-        ], width=2, style={'background-color': '#161b22', 'min-width': '200px'}),
-        dbc.Col(id='page-content', width=10)
-    ])
-])
-
 if __name__ == '__main__':
     app.run_server(debug=True, port=8050)
+

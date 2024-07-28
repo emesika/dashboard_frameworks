@@ -126,3 +126,39 @@ table thead th:nth-child(5) {
     font-weight: bold;
 }
 
+/* Dropdown Menu Styles */
+.Select-control {
+    background-color: #161b22;
+    color: white;
+    border: 1px solid #444;
+}
+
+.Select-menu-outer {
+    background-color: #161b22 !important;
+    color: white !important;
+}
+
+.Select-menu {
+    background-color: #161b22 !important;
+    color: white !important;
+}
+
+.Select-option {
+    color: white !important;
+    background-color: #161b22 !important;
+}
+
+.Select-option.is-focused {
+    background-color: #444 !important;
+    color: white !important;
+}
+
+.Select-option.is-selected {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.employee-name {
+    padding-left: 20px;  /* Adjust the value as needed */
+}
+
