@@ -103,6 +103,12 @@ app.layout = html.Div([
                 dbc.NavLink("Statistics", href="/statistics", active="exact"),
                 dbc.NavLink("Department Tree View", href="/department-tree-view", active="exact"),
                 dbc.NavLink("Interactive Map", href="/interactive-map", active="exact"),
+                html.Br(),
+                html.Hr(),
+                html.H3("External Links"),
+                dbc.NavLink("Streamlit", href="https://streamlit.io", external_link=True),
+                dbc.NavLink("Dash", href="https://dash.plotly.com", external_link=True),
+                dbc.NavLink("React", href="https://reactjs.org", external_link=True)
             ], vertical=True, pills=True, style={'margin-top': '20px'})
         ], width=2, style={'background-color': '#161b22'}),
         dbc.Col(id='page-content', width=10)
