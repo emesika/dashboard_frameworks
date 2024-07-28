@@ -1,0 +1,93 @@
+.stApp {
+    background-color: #0e1117;
+    color: white;
+}
+.sidebar .sidebar-content {
+    background-color: #161b22;
+}
+.stCheckbox, .stRadio, .stSelectbox {
+    color: white !important;
+}
+.stCheckbox > div > label, .stRadio > div > label, .stSelectbox > div > label {
+    color: white !important;
+}
+.stButton button {
+    background-color: #0083FF;
+    color: white;
+}
+.stTextInput > div > div > input {
+    background-color: #161b22;
+    color: white;
+}
+.stDataFrame tr {
+    background-color: #0e1117;
+}
+.stDataFrame th, .stDataFrame td {
+    color: white;
+}
+.stTable td {
+    color: white;
+}
+h1, h2, h3, h4, h5, h6, .stMarkdown p {
+    color: white;
+}
+/* Custom style for the selectbox dropdown */
+div[data-baseweb="select"] > div {
+    width: 200px;  /* Adjust this value to set the width of the dropdown */
+}
+/* Custom style for the table container */
+.stDataFrameContainer {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow: auto;
+}
+/* Custom table styles */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+.custom-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+.custom-table th {
+    padding: 12px 15px;
+    color: #ffffff;
+}
+.custom-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    color: #000000;  /* Set table row text color to black */
+}
+.custom-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.custom-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.custom-table tbody tr:nth-of-type(odd) {
+    background-color: #e9e9e9;
+}
+.custom-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.custom-table thead th:nth-child(1) {
+    background-color: #333333;
+}
+.custom-table thead th:nth-child(2) {
+    background-color: #FFDD44;
+}
+.custom-table thead th:nth-child(3) {
+    background-color: #FF6F61;
+}
+.custom-table thead th:nth-child(4) {
+    background-color: #6B5B95;
+}
+.custom-table thead th:nth-child(5) {
+    background-color: #88B04B;
+}
+
