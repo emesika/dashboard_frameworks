@@ -1,0 +1,50 @@
+Name,Age,Department,Salary,City,lat,lon
+James Green,56,Finance,83827,New York,40.7128,-74.0060
+Nancy White,35,Finance,105820,Los Angeles,34.0522,-118.2437
+Linda Blue,38,Finance,112623,Chicago,41.8781,-87.6298
+Tom Brown,57,Finance,72299,Houston,29.7604,-95.3698
+Robert Yellow,23,Finance,114044,Phoenix,33.4484,-112.0740
+Sam Johnson,27,Finance,92557,Philadelphia,39.9526,-75.1652
+Anna Black,35,Finance,68047,San Antonio,29.4241,-98.4936
+Jane Smith,36,Finance,65707,San Diego,32.7157,-117.1611
+John Doe,37,Finance,116842,Dallas,32.7767,-96.7970
+Emily Red,47,Finance,105016,San Jose,37.3382,-121.8863
+Michael Brown,29,Finance,98263,Austin,30.2672,-97.7431
+Laura White,31,Finance,109573,Jacksonville,30.3322,-81.6557
+Paul Adams,33,HR,110000,San Francisco,37.7749,-122.4194
+Nancy Carter,45,HR,95000,Columbus,39.9612,-82.9988
+Samuel Green,28,HR,105000,Fort Worth,32.7555,-97.3308
+Chris Blue,50,HR,112000,Indianapolis,39.7684,-86.1581
+Jessica Brown,42,HR,99000,Charlotte,35.2271,-80.8431
+David Black,36,HR,102000,Seattle,47.6062,-122.3321
+Amy White,48,HR,108000,Denver,39.7392,-104.9903
+Linda Yellow,31,HR,96000,Washington,38.9072,-77.0369
+Daniel Johnson,29,HR,99000,Boston,42.3601,-71.0589
+Patricia Smith,54,HR,95000,Nashville,36.1627,-86.7816
+Barbara Miller,39,HR,98000,El Paso,31.7619,-106.4850
+Jennifer Wilson,41,HR,97000,Detroit,42.3314,-83.0458
+Edward King,34,Marketing,85000,Memphis,35.1495,-90.0490
+Thomas Green,46,Marketing,89000,Baltimore,39.2904,-76.6122
+Olivia Taylor,25,Marketing,88000,Milwaukee,43.0389,-87.9065
+Emma Anderson,38,Marketing,91000,Albuquerque,35.0844,-106.6504
+Sophia Martinez,29,Marketing,94000,Tucson,32.2226,-110.9747
+Isabella Hernandez,31,Marketing,92000,Fresno,36.7378,-119.7871
+Mason Clark,33,Marketing,87000,Sacramento,38.5816,-121.4944
+Liam Lewis,44,Marketing,86000,Kansas City,39.0997,-94.5786
+Jacob Young,39,Marketing,90000,Virginia Beach,36.8529,-75.9780
+James Hill,35,Marketing,87000,Atlanta,33.7490,-84.3880
+Benjamin Lee,41,Marketing,88000,Colorado Springs,38.8339,-104.8214
+William Walker,30,Marketing,85000,Omaha,41.2565,-95.9345
+Alexander Hall,37,Engineering,120000,Las Vegas,36.1699,-115.1398
+Ethan Allen,42,Engineering,115000,Long Beach,33.7701,-118.1937
+Michael Wright,29,Engineering,118000,Kansas City,39.0997,-94.5786
+Daniel Scott,34,Engineering,116000,Atlanta,33.7490,-84.3880
+Matthew Young,46,Engineering,114000,Colorado Springs,38.8339,-104.8214
+Joseph King,41,Engineering,117000,Miami,25.7617,-80.1918
+David Turner,32,Engineering,119000,St. Louis,38.6270,-90.1994
+Christopher Adams,28,Engineering,113000,Orlando,28.5383,-81.3792
+Joshua Baker,35,Engineering,121000,Cleveland,41.4993,-81.6944
+Andrew Gonzalez,36,Engineering,122000,Pittsburgh,40.4406,-79.9959
+Ryan Nelson,30,Engineering,115000,Indianapolis,39.7684,-86.1581
+John Carter,45,Engineering,117000,San Antonio,29.4241,-98.4936
+
