@@ -1,0 +1,221 @@
+/* App.css */
+body {
+    background-color: #0e1117;
+    color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #161b22;
+    width: 200px;
+    height: 100vh;
+    padding: 20px;
+    color: white;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Custom table styles */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.custom-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.custom-table th {
+    padding: 12px 15px;
+    color: #ffffff;
+}
+
+.custom-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    color: #000000;  /* Set table row text color to black */
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.custom-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.custom-table tbody tr:nth-of-type(odd) {
+    background-color: #e9e9e9;
+}
+
+.custom-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.custom-table thead th:nth-child(1) {
+    background-color: #333333;
+}
+
+.custom-table thead th:nth-child(2) {
+    background-color: #FFDD44;
+}
+
+.custom-table thead th:nth-child(3) {
+    background-color: #FF6F61;
+}
+
+.custom-table thead th:nth-child(4) {
+    background-color: #6B5B95;
+}
+
+.custom-table thead th:nth-child(5) {
+    background-color: #88B04B;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    padding: 20px;
+    color: white;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Radio button group styles */
+.radio-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.radio-group input {
+    margin-right: 5px;
+}
+
+/* Dropdown Menu Styles */
+.Select-control {
+    background-color: #161b22;
+    color: white;
+    border: 1px solid #444;
+}
+
+.Select-menu-outer {
+    background-color: #161b22 !important;
+    color: white !important;
+}
+
+.Select-menu {
+    background-color: #161b22 !important;
+    color: white !important;
+}
+
+.Select-option {
+    color: white !important;
+    background-color: #161b22 !important;
+}
+
+.Select-option.is-focused {
+    background-color: #444 !important;
+    color: white !important;
+}
+
+.Select-option.is-selected {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+/* Employee name styles */
+.employee-name {
+    padding-left: 20px;  /* Adjust the value as needed */
+}
+
+/* TreeView styles */
+.tree-view {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tree-view .node {
+    cursor: pointer;
+    position: relative;
+}
+
+.tree-view .node:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 10px;
+    height: 10px;
+}
+
+.tree-view .node:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    width: 10px;
+    height: 10px;
+    display: none;
+}
+
+.tree-view .node.open:after {
+    display: block;
+}
+
+.tree-view .children {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
