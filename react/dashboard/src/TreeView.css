@@ -1,0 +1,56 @@
+/* src/TreeView.css */
+.tree-view {
+  margin: 5px 0;
+  font-family: Arial, sans-serif;
+  padding: 0 10px;
+}
+
+.tree-view .info {
+  padding-left: 1em;
+  font-size: 14px;
+  color: #444;
+}
+
+.tree-view .tree-view_arrow {
+  cursor: pointer;
+  margin-right: 5px;
+  user-select: none;
+  color: #888;
+}
+
+.tree-view .tree-view_arrow:before {
+  content: '▶';
+  display: inline-block;
+  transform: rotate(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.tree-view .tree-view_arrow.collapsed:before {
+  transform: rotate(-90deg);
+}
+
+.tree-view .tree-view_item {
+  padding: 2px 0;
+}
+
+.tree-view .tree-view_item:hover {
+  background-color: #e0e0e0;
+}
+
+.tree-view .tree-view_item > .tree-view_arrow {
+  display: inline-block;
+}
+
+.node-label {
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.tree-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
