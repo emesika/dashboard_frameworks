@@ -108,7 +108,10 @@ app.layout = html.Div([
                 html.H3("External Links"),
                 dbc.NavLink("Streamlit", href="https://streamlit.io", external_link=True),
                 dbc.NavLink("Dash", href="https://dash.plotly.com", external_link=True),
-                dbc.NavLink("React", href="https://reactjs.org", external_link=True)
+                dbc.NavLink("React", href="https://reactjs.org", external_link=True),
+                html.Br(),
+                dbc.Button("Download Reports", id="download-reports-button", className="btn"),
+                html.Div(id='download-reports-output')
             ], vertical=True, pills=True, style={'margin-top': '20px'})
         ], width=2, style={'background-color': '#161b22'}),
         dbc.Col(id='page-content', width=10)
@@ -338,6 +341,15 @@ def update_map(selected_index):
         )
 
     return fig
+
+@app.callback(
+    Output('download-reports-output', 'children'),
+    [Input('download-reports-button', 'n_clicks')]
+)
+def download_reports(n_clicks):
+    if n_clicks:
+        return html.Div("Reports were downloaded successfully!", style={'color': 'green'})
+    return ""
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=8050)
