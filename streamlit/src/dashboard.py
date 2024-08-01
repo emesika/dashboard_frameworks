@@ -117,7 +117,7 @@ def show_department_tree_view(data):
     # Create nodes to display
     nodes = []
     for dept in data['Department'].unique():
-        children = [{"label": f"Employee: {row['Name']}", "value": f"{dept}_{row['Name']}_{index}"} for index, row in data[data['Department'] == dept].sort_values(by='Name').iterrows()]
+        children = [{"label": f"Employee: {row['Name']}", "value": f"{dept}_{row['Name']}"} for index, row in data[data['Department'] == dept].sort_values(by='Name').iterrows()]
         nodes.append({"label": f"Department: {dept}", "value": dept, "children": children})
 
     # Display tree select
@@ -191,6 +191,10 @@ st.sidebar.image("logo.png", width=100)
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Overview", "Employee Data", "Statistics", "Department Tree View", "Interactive Map"])
 
+# Button for downloading a document (dummy action)
+if st.sidebar.button("Download Reports"):
+    st.sidebar.success("Reports were downloaded successfully!")
+
 if page == "Overview":
     show_overview()
 elif page == "Employee Data":
@@ -201,10 +205,6 @@ elif page == "Department Tree View":
     show_department_tree_view(data)
 elif page == "Interactive Map":
     show_interactive_map(data)
-
-# Button for downloading a document (dummy action)
-if st.button("Download Report"):
-    st.write("Report downloaded!")
 
 # Add some useful links
 st.sidebar.markdown("[Streamlit Documentation](https://docs.streamlit.io)")
