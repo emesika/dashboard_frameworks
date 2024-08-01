@@ -75,7 +75,7 @@ def show_department_tree_view():
                 dbc.Button(
                     node['department'],
                     id=f"dept-{node['department']}-toggle",
-                    className="mb-3",
+                    className="mb-3 department-button",
                     color="primary",
                     n_clicks=0
                 ),
@@ -139,7 +139,10 @@ def display_page(pathname):
 def show_overview():
     return html.Div([
         html.H1("Overview"),
-        html.P("Welcome to the Dash Dashboard Example! Use the sidebar to navigate through different sections of the dashboard.")
+        html.P("Welcome to the Streamlit Dashboard Example!"),
+        html.P("Use the sidebar to navigate through different sections of the dashboard."),
+        html.Hr(),  # Adds a horizontal line
+        html.P("© 2024 Redhat Dashboard Example")
     ])
 
 def show_employee_data():
@@ -292,7 +295,7 @@ def show_interactive_map():
             options=[{'label': f"{row['Name']} ({row['City']})", 'value': index} for index, row in data.iterrows()],
             placeholder='Select an Employee'
         ),
-        dcc.Graph(id='employee-map')
+        dcc.Graph(id='employee-map', style={'height': '750px'})  # Adjust the height as needed
     ])
 
 @app.callback(
@@ -336,7 +339,7 @@ def update_map(selected_index):
                     lat=selected_row['lat'],
                     lon=selected_row['lon']
                 ),
-                zoom=10
+                zoom=6
             )
         )
 

@@ -181,3 +181,10 @@ table thead th:nth-child(5) {
     color: white !important;
 }
 
+/* Limit the width of department tree view buttons */
+.department-button {
+    width: 300px; /* Adjust the width as needed */
+    text-align: center; /* Center the text */
+    margin: 5px 0; /* Add some space between buttons */
+}
+

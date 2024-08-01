@@ -30,12 +30,13 @@ def render_html_table(dataframe):
     return dataframe.to_html(classes='custom-table', index=False, escape=False)
 
 def show_overview():
-    """
-    Display the overview section of the dashboard.
-    """
-    st.title("Overview")
-    st.write("Welcome to the Streamlit Dashboard Example!")
-    st.write("Use the sidebar to navigate through different sections of the dashboard.")
+    return html.Div([
+        html.H1("Overview"),
+        html.P("Welcome to the Streamlit Dashboard Example!"),
+        html.P("Use the sidebar to navigate through different sections of the dashboard."),
+        html.Hr(),  # Adds a horizontal line
+        html.P("© 2024 Redhat Dashboard Example")
+    ])
 
 def show_employee_data(data):
     """
