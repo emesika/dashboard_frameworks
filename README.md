@@ -46,13 +46,19 @@ cd dashboard_frameworks
     cd streamlit
     ```
 
-2. Install the required Python packages:
+2. Install system dependencies:
+
+    ```sh
+    sudo dnf install python3-devel
+    ```
+
+3. Install the required Python packages:
 
     ```sh
     pip install -r requirements.txt
     ```
 
-3. Run the Streamlit app:
+4. Run the Streamlit app:
 
     ```sh
     streamlit run src/dashboard.py
@@ -66,13 +72,19 @@ cd dashboard_frameworks
     cd dash
     ```
 
-2. Install the required Python packages:
+2. Install system dependencies:
+
+    ```sh
+    sudo dnf install python3-devel
+    ```
+
+3. Install the required Python packages:
 
     ```sh
     pip install -r requirements.txt
     ```
 
-3. Run the Dash app:
+4. Run the Dash app:
 
     ```sh
     python src/dashboard.py
@@ -86,13 +98,19 @@ cd dashboard_frameworks
     cd react
     ```
 
-2. Install the required npm packages:
+2. Install Node.js and npm:
+
+    ```sh
+    sudo dnf install nodejs npm
+    ```
+
+3. Install the required npm packages:
 
     ```sh
     npm install
     ```
 
-3. Start the React app:
+4. Start the React app:
 
     ```sh
     npm start
