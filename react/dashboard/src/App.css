@@ -109,24 +109,6 @@ body {
     background-color: #88B04B;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-.sidebar {
-    width: 200px;
-    background-color: #333;
-    padding: 20px;
-    color: white;
-}
-
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
 /* Radio button group styles */
 .radio-group {
     display: flex;
@@ -217,5 +199,44 @@ body {
 .tree-view .children {
     list-style-type: none;
     padding-left: 20px;
+}
+
+/* Download button and success message styles */
+.download-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.download-section button {
+    background-color: #0083FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.download-section button:hover {
+    background-color: #005bb5;
+}
+
+.success-message {
+    margin-top: 10px;
+    color: #28a745;
+    font-size: 14px;
+}
+
+/* External links styles */
+.external-links {
+    margin-top: 20px;
+}
+
+.external-links a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.external-links a:hover {
+    text-decoration: underline;
 }
 

@@ -190,10 +190,6 @@ st.sidebar.image("logo.png", width=100)
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Overview", "Employee Data", "Statistics", "Department Tree View", "Interactive Map"])
 
-# Button for downloading a document (dummy action)
-if st.sidebar.button("Download Reports"):
-    st.sidebar.success("Reports were downloaded successfully!")
-
 if page == "Overview":
     show_overview()
 elif page == "Employee Data":
@@ -207,11 +203,12 @@ elif page == "Interactive Map":
 
 # Add some useful links
 st.sidebar.markdown("[Streamlit Documentation](https://docs.streamlit.io)")
-st.sidebar.markdown("[Plotly Documentation](https://plotly.com/python/)")
+st.sidebar.markdown("[Dash and Plotly Documentation](https://plotly.com/python/)")
+st.sidebar.markdown("[React Documentation](https://react.dev/)")
 
-# Add a footer
-st.markdown("***")
-st.markdown("© 2024 Redhat Dashboard Example")
+# Button for downloading a document (dummy action)
+if st.sidebar.button("Download Reports"):
+    st.sidebar.success("Reports were downloaded successfully!")
 
 # Run this with `streamlit run dashboard.py`
 
