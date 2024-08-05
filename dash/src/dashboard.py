@@ -106,9 +106,9 @@ app.layout = html.Div([
                 html.Br(),
                 html.Hr(),
                 html.H3("External Links"),
-                dbc.NavLink("Streamlit", href="https://streamlit.io", external_link=True),
-                dbc.NavLink("Dash", href="https://dash.plotly.com", external_link=True),
-                dbc.NavLink("React", href="https://reactjs.org", external_link=True),
+                dbc.NavLink("Streamlit Documentation", href="https://streamlit.io", external_link=True),
+                dbc.NavLink("Dash Documentation", href="https://dash.plotly.com", external_link=True),
+                dbc.NavLink("React Documentation", href="https://reactjs.org", external_link=True),
                 html.Br(),
                 dbc.Button("Download Reports", id="download-reports-button", className="btn"),
                 html.Div(id='download-reports-output')
@@ -139,7 +139,7 @@ def display_page(pathname):
 def show_overview():
     return html.Div([
         html.H1("Overview"),
-        html.P("Welcome to the Streamlit Dashboard Example!"),
+        html.P("Welcome to the Dash Dashboard Example!"),
         html.P("Use the sidebar to navigate through different sections of the dashboard."),
         html.Hr(),  # Adds a horizontal line
         html.P("© 2024 Redhat Dashboard Example")
