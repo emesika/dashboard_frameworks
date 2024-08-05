@@ -54,7 +54,7 @@ const EmployeeData = () => {
       <select
         value={selectedDepartment}
         onChange={(e) => setSelectedDepartment(e.target.value)}
-        style={{ width: '50%' }}
+        style={{ width: '10%' }}
       >
         <option value="">Select Department</option>
         {departments.map((dept) => (
