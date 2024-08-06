@@ -1,21 +1,24 @@
 /* src/TreeView.css */
 .tree-view {
   margin: 5px 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   padding: 0 10px;
+  border-radius: 5px;
+  background-color: #ffffff; /* Brighter background for clarity */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .tree-view .info {
   padding-left: 1em;
   font-size: 14px;
-  color: #444;
+  color: #5C6BC0; /* Softer blue for text */
 }
 
 .tree-view .tree-view_arrow {
   cursor: pointer;
   margin-right: 5px;
   user-select: none;
-  color: #888;
+  color: #FFA726; /* Orange for arrow */
 }
 
 .tree-view .tree-view_arrow:before {
@@ -34,7 +37,7 @@
 }
 
 .tree-view .tree-view_item:hover {
-  background-color: #e0e0e0;
+  background-color: #E1BEE7; /* Light purple for hover */
 }
 
 .tree-view .tree-view_item > .tree-view_arrow {
@@ -43,14 +46,14 @@
 
 .node-label {
   font-weight: bold;
-  color: #333;
+  color: #388E3C; /* Dark green for labels */
   cursor: pointer;
 }
 
 .tree-container {
-  border: 1px solid #ccc;
+  border: 1px solid #BDBDBD; /* Softer border color */
   padding: 10px;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #F5F5F5; /* Lighter grey background */
 }
 

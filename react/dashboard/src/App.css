@@ -240,3 +240,11 @@ body {
     text-decoration: underline;
 }
 
+/* Sort Indicator Styles */
+.sort-indicator {
+    opacity: 0.75; /* Slightly transparent to blend with the header */
+    font-size: 12px; /* Smaller font size to keep focus on header text */
+    margin-left: 5px; /* Space from the header text */
+    vertical-align: middle; /* Align with the text */
+}
+
