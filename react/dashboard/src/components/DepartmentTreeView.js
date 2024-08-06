@@ -1,4 +1,3 @@
-// src/components/DepartmentTreeView.js
 import React, { useState, useEffect } from 'react';
 import TreeView from 'react-treeview';
 import 'react-treeview/react-treeview.css';
@@ -14,13 +13,20 @@ const DepartmentTreeView = () => {
       header: true,
       complete: (results) => {
         const data = results.data;
-        const departments = [...new Set(data.map(item => item.Department).filter(dept => dept))];  // Exclude empty departments
+        const departments = [...new Set(data.map(item => item.Department).filter(dept => dept))];
         const tree = departments.map(dept => {
           return {
-            department: dept,
+            name: dept,
             collapsed: true,
-            children: data.filter(item => item.Department === dept && item.Name).map((item) => ({
+            children: data.filter(item => item.Department === dept).map((item) => ({
               name: item.Name,
+              age: item.Age,
+              city: item.City,
+              collapsed: true,
+              children: [
+                { detail: `Age: ${item.Age}` },
+                { detail: `City: ${item.City}` }
+              ]
             })),
           };
         });
@@ -29,10 +35,9 @@ const DepartmentTreeView = () => {
     });
   }, []);
 
-  const handleToggle = (index) => {
-    const newTreeData = [...treeData];
-    newTreeData[index].collapsed = !newTreeData[index].collapsed;
-    setTreeData(newTreeData);
+  const handleToggle = (node) => {
+    node.collapsed = !node.collapsed;
+    setTreeData([...treeData]);
   };
 
   return (
@@ -42,14 +47,25 @@ const DepartmentTreeView = () => {
         {treeData.map((node, index) => (
           <TreeView
             key={index}
-            nodeLabel={<span onClick={() => handleToggle(index)} className="node-label">{node.department}</span>}
+            nodeLabel={<span onClick={() => handleToggle(node)} className="node-label">{node.name}</span>}
             collapsed={node.collapsed}
             itemClassName="tree-view_item"
             treeClassName="tree-view"
             arrowClassName={`tree-view_arrow ${node.collapsed ? 'collapsed' : ''}`}
           >
             {node.children.map((child, i) => (
-              <div key={i} className="info">{child.name}</div>
+              <TreeView
+                key={i}
+                nodeLabel={<span onClick={() => handleToggle(child)} className="node-label">{child.name}</span>}
+                collapsed={child.collapsed}
+                itemClassName="tree-view_item"
+                treeClassName="tree-view"
+                arrowClassName={`tree-view_arrow ${child.collapsed ? 'collapsed' : ''}`}
+              >
+                {child.children.map((detail, j) => (
+                  <div key={j} className="info">{detail.detail}</div>
+                ))}
+              </TreeView>
             ))}
           </TreeView>
         ))}

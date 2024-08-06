@@ -1,6 +1,6 @@
 import os
 import dash
-from dash import dcc, html, Input, Output, State, dash_table
+from dash import dcc, html, Input, Output, State, dash_table, MATCH
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
@@ -68,28 +68,61 @@ def build_tree(data):
 department_tree = build_tree(data)
 
 def show_department_tree_view():
+    departments = data['Department'].unique()
     tree_layout = []
-    for node in department_tree:
-        tree_layout.append(
-            html.Div([
-                dbc.Button(
-                    node['department'],
-                    id=f"dept-{node['department']}-toggle",
-                    className="mb-3 department-button",
-                    color="primary",
-                    n_clicks=0
-                ),
-                dbc.Collapse(
-                    html.Div([html.P(emp['name'], className="employee-name") for emp in node['employees']]),
-                    id=f"dept-{node['department']}-collapse",
-                    is_open=False
-                )
-            ])
+
+    for dept in departments:
+        dept_data = data[data['Department'] == dept].sort_values(by='Name')
+        children_layout = []
+        for _, emp in dept_data.iterrows():
+            emp_id = f"emp-{emp['Name'].replace(' ', '-')}"
+            emp_details = html.Div([
+                html.P(f"Age: {emp['Age']}"),
+                html.P(f"City: {emp['City']}")
+            ], style={'padding-left': '40px', 'display': 'none'}, id={'type': 'emp-details', 'index': emp_id})
+
+            emp_button = dbc.Button(emp['Name'], color="secondary", size="sm",
+                                    style={'margin': '2px', 'width': '200px', 'margin-left': '20px'},  # Adjusted width and added indentation
+                                    id={'type': "emp-button", 'index': emp_id})
+            children_layout.extend([emp_button, emp_details])
+
+        dept_button = dbc.Button(
+            f"Department: {dept}", color="primary",
+            id={'type': "dept-button", 'index': dept},
+            className="mb-1",
+            style={'width': '250px'}
         )
+        dept_collapse = dbc.Collapse(
+            children_layout, id={'type': 'dept-collapse', 'index': dept}, is_open=False,
+            style={'margin-left': '20px'}  # Added indentation
+        )
+
+        tree_layout.extend([dept_button, dept_collapse])
+
     return html.Div([
         html.H1("Department Tree View"),
         html.Div(tree_layout)
     ])
+
+@app.callback(
+    Output({'type': 'dept-collapse', 'index': MATCH}, 'is_open'),
+    [Input({'type': 'dept-button', 'index': MATCH}, 'n_clicks')],
+    [State({'type': 'dept-collapse', 'index': MATCH}, 'is_open')]
+)
+def toggle_department_collapse(n_clicks, is_open):
+    if n_clicks:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output({'type': 'emp-details', 'index': MATCH}, 'style'),
+    [Input({'type': 'emp-button', 'index': MATCH}, 'n_clicks')],
+    [State({'type': 'emp-details', 'index': MATCH}, 'style')]
+)
+def toggle_employee_details(n_clicks, style):
+    if n_clicks:
+        return {'display': 'block' if style['display'] == 'none' else 'none'}
+    return style
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -356,4 +389,5 @@ def download_reports(n_clicks):
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=8050)
+   
 
