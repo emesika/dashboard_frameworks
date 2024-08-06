@@ -113,15 +113,36 @@ def show_department_tree_view(data):
     """
     st.title("Department Tree View")
 
-    # Create nodes to display
+    # Create nodes for each department with children for each employee
+    # and further children for employee details like Age and City.
     nodes = []
     for dept in data['Department'].unique():
-        children = [{"label": f"Employee: {row['Name']}", "value": f"{dept}_{row['Name']}"} for index, row in data[data['Department'] == dept].sort_values(by='Name').iterrows()]
-        nodes.append({"label": f"Department: {dept}", "value": dept, "children": children})
+        dept_data = data[data['Department'] == dept].sort_values(by='Name')
+        children = []
+        for _, row in dept_data.iterrows():
+            # Create a node for each employee with subnodes for details
+            employee_details = [
+                {"label": f"Age: {row['Age']}", "value": f"age-{row['Name']}"},
+                {"label": f"City: {row['City']}", "value": f"city-{row['Name']}"}
+            ]
+            children.append({
+                "label": f"Employee: {row['Name']}",
+                "value": row['Name'],
+                "children": employee_details
+            })
 
-    # Display tree select
-    return_select = tree_select(nodes)
-    st.write("Selected node(s):", return_select)
+        nodes.append({
+            "label": f"Department: {dept}",
+            "value": dept,
+            "children": children
+        })
+
+    # Display tree select without multiselect option
+    selected_nodes = tree_select(
+        nodes,
+        key='dept_tree'
+    )
+    st.write("Selected node(s):", selected_nodes)
 
 def show_interactive_map(data):
     """
